@@ -48,6 +48,7 @@ export default function Hero() {
               href="https://wa.me/549XXXXXXXXXX"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Contactar por WhatsApp"
               className="text-[10px] tracking-[2.5px] uppercase text-white rounded-sm px-6 py-3 transition-colors bg-[#1A1A1A] hover:bg-[#333333]"
             >
               Hablemos

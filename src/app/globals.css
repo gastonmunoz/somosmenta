@@ -27,3 +27,17 @@ body {
   color: var(--black);
   background: var(--white);
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 72px;
+}

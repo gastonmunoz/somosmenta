@@ -62,6 +62,7 @@ export default function Navbar() {
           href="https://wa.me/549XXXXXXXXXX"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Contactar por WhatsApp"
           className="hidden md:inline-flex items-center text-xs tracking-wider uppercase text-white rounded-sm px-4 py-2 transition-opacity hover:opacity-90"
           style={{ backgroundColor: "var(--sage)" }}
         >
@@ -73,7 +74,7 @@ export default function Navbar() {
         <button
           className="md:hidden p-1"
           onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           style={{ color: "var(--black)" }}
         >
           {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -101,6 +102,7 @@ export default function Navbar() {
             href="https://wa.me/549XXXXXXXXXX"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Contactar por WhatsApp"
             className="inline-flex items-center justify-center text-xs tracking-wider uppercase text-white rounded-sm px-4 py-2.5 mt-1"
             style={{ backgroundColor: "var(--sage)" }}
             onClick={() => setMenuOpen(false)}

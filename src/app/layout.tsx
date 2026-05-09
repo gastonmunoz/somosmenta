@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   title: "Menta | Agencia Boutique de Experiencias Corporativas",
   description:
     "Organizamos eventos corporativos a medida. Somos el nexo entre tu empresa y los mejores proveedores.",
+  openGraph: {
+    title: "Menta | Agencia Boutique de Experiencias Corporativas",
+    description: "Organizamos eventos corporativos a medida.",
+    type: "website",
+    locale: "es_AR",
+  },
 };
 
 export default function RootLayout({

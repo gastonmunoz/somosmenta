@@ -23,6 +23,7 @@ export default function Contact() {
           href="https://wa.me/549XXXXXXXXXX"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Contactar por WhatsApp"
           className="block mx-auto w-fit bg-[#5D8A6B] text-white text-[11px] tracking-[3px] uppercase px-9 py-4 rounded-sm mb-10 hover:bg-[#4a7057] transition-colors"
         >
           <MessageCircle className="w-4 h-4 inline mr-2 align-middle" />
