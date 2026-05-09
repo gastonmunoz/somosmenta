@@ -1,6 +1,6 @@
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
-// TODO: import Services from "@/components/sections/Services";
+import Services from "@/components/sections/Services";
 // TODO: import About from "@/components/sections/About";
 // TODO: import Process from "@/components/sections/Process";
 // TODO: import Contact from "@/components/sections/Contact";
@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      {/* <Services /> */}
+      <Services />
       {/* <About /> */}
       {/* <Process /> */}
       {/* <Contact /> */}
