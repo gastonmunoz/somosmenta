@@ -45,9 +45,9 @@ export default function HeroSectionMenta() {
   return (
     <section
       id="hero"
-      className="w-full overflow-hidden bg-white pt-24 pb-20 px-8 md:px-12"
+      className="w-full min-h-dvh flex items-center overflow-hidden bg-white pt-20 pb-12 px-8 md:px-12"
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
         {/* Left: text content */}
         <motion.div
