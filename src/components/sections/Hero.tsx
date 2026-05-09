@@ -48,27 +48,13 @@ export default function Hero() {
               href="https://wa.me/549XXXXXXXXXX"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[10px] tracking-[2.5px] uppercase text-white rounded-sm px-6 py-3 transition-colors"
-              style={{ backgroundColor: "var(--black)" }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = "#333333")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = "var(--black)")
-              }
+              className="text-[10px] tracking-[2.5px] uppercase text-white rounded-sm px-6 py-3 transition-colors bg-[#1A1A1A] hover:bg-[#333333]"
             >
               Hablemos
             </a>
             <a
               href="#servicios"
-              className="text-[10px] tracking-wider uppercase underline underline-offset-4 transition-colors"
-              style={{ color: "var(--gray-text)" }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--black)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "var(--gray-text)")
-              }
+              className="text-[10px] tracking-wider uppercase underline underline-offset-4 transition-colors text-[#888888] hover:text-[#1A1A1A]"
             >
               Ver servicios
             </a>
