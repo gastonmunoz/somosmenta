@@ -4,15 +4,40 @@ import { EVENT_TYPE_LABELS, BUDGET_LABELS, type WizardData } from '@/lib/wizard-
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+function esc(s: string) {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export async function POST(request: NextRequest) {
   try {
     const data: WizardData = await request.json();
 
+    if (
+      !['team-building', 'lanzamiento', 'conferencia', 'outro'].includes(data.eventType) &&
+      !['team-building', 'lanzamiento', 'conferencia', 'otro'].includes(data.eventType)
+    ) {
+      return NextResponse.json({ error: 'Invalid eventType' }, { status: 400 });
+    }
+    if (!isValidEmail(data.email)) {
+      return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
+    }
+    if (!data.company?.trim()) {
+      return NextResponse.json({ error: 'Missing company' }, { status: 400 });
+    }
+
     const rows: [string, string][] = [
-      ['Tipo de evento', EVENT_TYPE_LABELS[data.eventType]],
+      ['Tipo de evento', EVENT_TYPE_LABELS[data.eventType] ?? data.eventType],
       ['Asistentes', String(data.attendees)],
       ['Fecha', new Date(data.date).toLocaleDateString('es-AR')],
-      ['Presupuesto', BUDGET_LABELS[data.budget]],
+      ['Presupuesto', BUDGET_LABELS[data.budget] ?? data.budget],
       ['Empresa', data.company],
       ['Email', data.email],
       ...(data.notes ? [['Notas', data.notes] as [string, string]] : []),
@@ -21,14 +46,14 @@ export async function POST(request: NextRequest) {
     const tableRows = rows
       .map(
         ([k, v]) =>
-          `<tr><td style="padding:6px 14px;font-weight:600;color:#555;white-space:nowrap">${k}</td><td style="padding:6px 14px;color:#1A1A1A">${v}</td></tr>`
+          `<tr><td style="padding:6px 14px;font-weight:600;color:#555;white-space:nowrap">${esc(k)}</td><td style="padding:6px 14px;color:#1A1A1A">${esc(v)}</td></tr>`
       )
       .join('');
 
     await resend.emails.send({
       from: process.env.RESEND_FROM!,
       to: process.env.RESEND_TO!,
-      subject: `Nuevo brief — ${data.company} — ${EVENT_TYPE_LABELS[data.eventType]}`,
+      subject: `Nuevo brief — ${esc(data.company)} — ${esc(EVENT_TYPE_LABELS[data.eventType] ?? data.eventType)}`,
       html: `
         <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
           <h2 style="color:#5D8A6B;margin-bottom:4px">Nuevo Event Brief</h2>

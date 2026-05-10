@@ -33,19 +33,18 @@ export default function Wizard() {
     setData(final);
     setSubmitting(true);
 
-    generateBrief(final);
-
     await fetch('/api/send-brief', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(final),
     }).catch(() => {});
 
+    generateBrief(final);
     setSubmitting(false);
     setDone(true);
   }
 
-  const progress = ((step + 1) / STEPS) * 100;
+  const progress = (step / STEPS) * 100;
 
   const stepComponents = [
     <WizardStep1EventType key="1" data={data} onNext={handleNext} />,
