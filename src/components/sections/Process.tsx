@@ -32,7 +32,7 @@ export default function Process() {
           className="text-3xl md:text-4xl font-normal text-[#1A1A1A] mb-14"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
-          El enfoque Menta
+          El enfoque Calton
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">

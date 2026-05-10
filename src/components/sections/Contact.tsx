@@ -20,7 +20,7 @@ export default function Contact() {
           Contanos tu proyecto y te armamos una propuesta a medida.
         </p>
         <a
-          href="https://wa.me/549XXXXXXXXXX"
+          href="https://wa.me/5491157256393"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"
@@ -30,7 +30,7 @@ export default function Contact() {
           Escribinos por WhatsApp
         </a>
         <p className="text-[10px] text-white/30 tracking-[2.5px] uppercase">
-          Instagram&nbsp;&nbsp;·&nbsp;&nbsp;LinkedIn&nbsp;&nbsp;·&nbsp;&nbsp;hola@menta.com.ar
+          Instagram&nbsp;&nbsp;·&nbsp;&nbsp;LinkedIn&nbsp;&nbsp;·&nbsp;&nbsp;hola@calton.com.ar
         </p>
       </div>
     </section>

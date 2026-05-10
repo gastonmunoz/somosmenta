@@ -6,10 +6,10 @@ export default function Footer() {
           className="text-sm uppercase tracking-[3px] text-white/30"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
-          Menta
+          Calton
         </span>
         <span className="text-[10px] text-white/20 tracking-[1px]">
-          © 2026 Menta. Todos los derechos reservados.
+          © 2026 Calton. Todos los derechos reservados.
         </span>
       </div>
     </footer>

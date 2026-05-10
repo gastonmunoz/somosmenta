@@ -34,7 +34,7 @@ export default function Navbar() {
           className="text-[20px] tracking-widest uppercase font-normal"
           style={{ fontFamily: "var(--font-playfair)", color: "var(--black)" }}
         >
-          Menta
+          Calton
         </a>
 
         {/* Desktop nav */}
@@ -59,7 +59,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <a
-          href="https://wa.me/549XXXXXXXXXX"
+          href="https://wa.me/5491157256393"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"
@@ -99,7 +99,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://wa.me/549XXXXXXXXXX"
+            href="https://wa.me/5491157256393"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contactar por WhatsApp"

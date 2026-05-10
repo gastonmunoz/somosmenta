@@ -41,7 +41,7 @@ const images = [
   'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop&q=80',
 ]
 
-export default function HeroSectionMenta() {
+export default function HeroSectionCalton() {
   return (
     <section
       id="hero"
@@ -92,7 +92,7 @@ export default function HeroSectionMenta() {
             variants={itemVariants}
           >
             <Button asChild size="lg" variant="default">
-              <a href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+              <a href="https://wa.me/5491157256393" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
                 Hablemos
               </a>
             </Button>
@@ -164,7 +164,7 @@ export default function HeroSectionMenta() {
           >
             <img
               src={images[0]}
-              alt="Evento corporativo organizado por Menta"
+              alt="Evento corporativo organizado por Calton"
               className="h-full w-full rounded-xl object-cover"
               loading="eager"
             />
@@ -178,7 +178,7 @@ export default function HeroSectionMenta() {
           >
             <img
               src={images[1]}
-              alt="Lanzamiento de producto coordinado por Menta"
+              alt="Lanzamiento de producto coordinado por Calton"
               className="h-full w-full rounded-xl object-cover"
               loading="lazy"
             />
@@ -192,7 +192,7 @@ export default function HeroSectionMenta() {
           >
             <img
               src={images[2]}
-              alt="Team building organizado por Menta"
+              alt="Team building organizado por Calton"
               className="h-full w-full rounded-xl object-cover"
               loading="lazy"
             />

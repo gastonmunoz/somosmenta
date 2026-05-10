@@ -1,5 +1,5 @@
-import HeroSectionMenta from '@/components/ui/hero-section-menta'
+import HeroSectionCalton from '@/components/ui/hero-section-calton'
 
 export default function Hero() {
-  return <HeroSectionMenta />
+  return <HeroSectionCalton />
 }
