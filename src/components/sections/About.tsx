@@ -18,8 +18,7 @@ export default function About() {
 
         {/* LEFT: full-bleed image panel */}
         <motion.div
-          className="relative overflow-hidden md:flex-none"
-          style={{ width: "42%" }}
+          className="relative overflow-hidden w-full md:flex-none md:w-[42%] order-2 md:order-1"
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -72,7 +71,7 @@ export default function About() {
         </motion.div>
 
         {/* RIGHT: editorial text */}
-        <div className="flex-1 flex flex-col justify-center px-9 md:px-12 lg:px-16 xl:px-20 py-16 md:py-24">
+        <div className="flex-1 flex flex-col justify-center px-9 md:px-12 lg:px-16 xl:px-20 py-16 md:py-24 order-1 md:order-2">
 
           <motion.p
             className="uppercase text-[var(--sage)] mb-7"

@@ -153,7 +153,7 @@ export default function HeroSectionCalton() {
 
         {/* Right: media grid */}
         <motion.div
-          className="relative order-first lg:order-last"
+          className="relative"
           initial="hidden"
           animate="visible"
         >

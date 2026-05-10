@@ -91,7 +91,7 @@ export function VerticalTabs() {
     <section id="proceso" className="w-full bg-[#F5F5F3] py-8 md:py-16 lg:py-24">
       <div className="w-full px-8 md:px-12 lg:px-16 xl:px-20 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 pt-4">
+          <div className="lg:col-span-5 flex flex-col justify-center order-1 pt-4">
             <div className="space-y-1 mb-12">
               <p className="text-[10px] tracking-[4px] uppercase text-sage mb-1">
                 Cómo trabajamos
@@ -170,7 +170,7 @@ export function VerticalTabs() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 flex flex-col justify-end h-full order-1 lg:order-2">
+          <div className="lg:col-span-7 flex flex-col justify-end h-full order-2">
             <div
               className="relative"
               onMouseEnter={() => setIsPaused(true)}
