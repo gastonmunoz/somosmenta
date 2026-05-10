@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
 import Process from "@/components/sections/Process";
+import Wizard from "@/components/sections/Wizard";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Services />
       <About />
       <Process />
+      <Wizard />
       <Contact />
       <Footer />
     </main>
