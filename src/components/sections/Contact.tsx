@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import SocialIcons from "@/components/ui/social-icons";
 
 export default function Contact() {
   return (
@@ -29,8 +30,9 @@ export default function Contact() {
           <MessageCircle className="w-4 h-4 inline mr-2 align-middle" />
           Escribinos por WhatsApp
         </a>
-        <p className="text-[10px] text-white/30 tracking-[2.5px] uppercase">
-          Instagram&nbsp;&nbsp;·&nbsp;&nbsp;LinkedIn&nbsp;&nbsp;·&nbsp;&nbsp;hola@calton.com.ar
+        <SocialIcons />
+        <p className="text-[10px] text-white/30 tracking-[2.5px] uppercase mt-4">
+          hola@calton.com.ar
         </p>
       </div>
     </section>
