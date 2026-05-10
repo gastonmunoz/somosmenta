@@ -22,7 +22,7 @@ Single-page marketing site for Calton (corporate event agency). One route (`/`),
 
 ### Page composition (`src/app/page.tsx`)
 
-Sections render in order: `Navbar → Hero → Services → About → Process → Contact → Footer`. All are single-purpose components with no shared state between them.
+Sections render in order: `Navbar → Hero → Services → About → Process → Wizard → Contact → Footer`. All are single-purpose components with no shared state between them.
 
 ### Component split
 
@@ -32,7 +32,10 @@ Sections render in order: `Navbar → Hero → Services → About → Process �
   - `hero-section-calton.tsx` — Framer Motion animated hero with image collage
   - `link-hover.tsx` — GSAP-powered fullscreen nav menu (image-hover effect). Loaded `ssr: false` via `next/dynamic` because GSAP's `registerPlugin` conflicts with SSR.
   - `sticky-scroll-cards-section.tsx` — Services sticky scroll
+  - `wizard/` — 5-step Event Brief wizard components (EventType, Attendees, Date, Budget, Contact) + WizardSuccess
 - `src/lib/utils.ts` — `cn()` helper (clsx + tailwind-merge)
+- `src/lib/wizard-types.ts` — `WizardData` type, event/budget label maps, recommended services per event type
+- `src/lib/generateBrief.ts` — generates a PDF brief from `WizardData` (client-side, no API)
 
 ### Navbar overlay
 
