@@ -37,7 +37,7 @@ export default function About() {
             className="block leading-[0.88]"
             style={{
               fontFamily: "var(--font-playfair)",
-              fontSize: "clamp(3rem, 7vw, 7.5rem)",
+              fontSize: "clamp(4.5rem, 7vw, 6rem)",
               fontWeight: i === 2 ? 400 : 900,
               fontStyle: i === 2 ? "italic" : "normal",
               letterSpacing: i === 2 ? "-1px" : "-2px",
