@@ -1,5 +1,5 @@
-import { StickyScrollCardsSection } from '@/components/ui/sticky-scroll-cards-section'
+import { EditorialServicesGrid } from '@/components/ui/editorial-services-grid'
 
 export default function Services() {
-  return <StickyScrollCardsSection />
+  return <EditorialServicesGrid />
 }
