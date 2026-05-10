@@ -54,7 +54,7 @@ export default function About() {
       </div>
 
       <motion.div
-        className="h-px bg-[#1A1A1A]/10 mb-8"
+        className="h-px bg-[var(--black)]/10 mb-8"
         initial={{ scaleX: 0, originX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
