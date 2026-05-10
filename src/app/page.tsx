@@ -7,6 +7,7 @@ import Wizard from "@/components/sections/Wizard";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ui/chatbot/ChatWidget";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <FAQ />
       <Contact />
       <Footer />
+      <ChatWidget />
     </main>
   );
 }
