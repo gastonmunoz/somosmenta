@@ -1,3 +1,12 @@
+export type AiBriefContent = {
+  resumenEjecutivo: string;
+  serviciosRecomendados: { nombre: string; descripcion: string }[];
+  analisisPresupuesto: string;
+  timelineSugerido: string[];
+  preguntasClave: string[];
+  proximosPasos: string[];
+};
+
 export type WizardData = {
   eventType: 'team-building' | 'lanzamiento' | 'conferencia' | 'otro';
   attendees: number;

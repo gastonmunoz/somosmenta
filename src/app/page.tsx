@@ -14,10 +14,10 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <Wizard />
       <Services />
       <About />
       <Process />
-      <Wizard />
       <FAQ />
       <Contact />
       <Footer />

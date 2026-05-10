@@ -84,7 +84,7 @@ export default function WizardStep5Contact({ data, onSubmit, onBack, submitting 
           Volver
         </Button>
         <Button onClick={handleSubmit} disabled={!canSubmit} className="flex-1">
-          {submitting ? 'Enviando...' : 'Generar Brief'}
+          {submitting ? 'Generando brief...' : 'Generar Brief'}
         </Button>
       </div>
     </div>

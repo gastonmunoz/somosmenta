@@ -9,7 +9,13 @@ import WizardStep4Budget from '@/components/ui/wizard/WizardStep4Budget';
 import WizardStep5Contact from '@/components/ui/wizard/WizardStep5Contact';
 import WizardSuccess from '@/components/ui/wizard/WizardSuccess';
 import { generateBrief } from '@/lib/generateBrief';
-import type { WizardData } from '@/lib/wizard-types';
+import {
+  EVENT_TYPE_LABELS,
+  BUDGET_LABELS,
+  RECOMMENDED_SERVICES,
+  type WizardData,
+  type AiBriefContent,
+} from '@/lib/wizard-types';
 
 const STEPS = 5;
 
@@ -33,13 +39,35 @@ export default function Wizard() {
     setData(final);
     setSubmitting(true);
 
-    await fetch('/api/send-brief', {
+    let aiContent: AiBriefContent | null = null;
+    try {
+      const res = await fetch('/api/generate-brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(final),
+      });
+      if (res.ok) aiContent = await res.json();
+    } catch {}
+
+    fetch('/api/send-brief', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(final),
     }).catch(() => {});
 
-    generateBrief(final);
+    const content: AiBriefContent = aiContent ?? {
+      resumenEjecutivo: `${final.company} está organizando un evento de ${EVENT_TYPE_LABELS[final.eventType]} para ${final.attendees} personas.`,
+      serviciosRecomendados: RECOMMENDED_SERVICES[final.eventType].map(s => ({ nombre: s, descripcion: '' })),
+      analisisPresupuesto: `Presupuesto estimado: ${BUDGET_LABELS[final.budget]}.`,
+      timelineSugerido: ['Confirmar detalles con el equipo de producción'],
+      preguntasClave: [],
+      proximosPasos: [
+        'El equipo de Calton se contactará a la brevedad.',
+        'Mientras tanto, podés escribirnos a hola@calton.com.ar',
+      ],
+    };
+
+    generateBrief(final, content);
     setSubmitting(false);
     setDone(true);
   }
@@ -64,13 +92,13 @@ export default function Wizard() {
     <section id="brief" className="bg-[var(--sage-light)] py-20 md:py-24 px-8 md:px-12">
       <div className="max-w-xl mx-auto">
         <p className="text-[10px] tracking-[4px] uppercase text-[var(--sage)] mb-4 text-center">
-          Armá tu propuesta
+          Contanos sobre tu evento
         </p>
         <h2
           className="text-4xl md:text-5xl font-normal text-[var(--black)] mb-10 text-center"
           style={{ fontFamily: 'var(--font-playfair)' }}
         >
-          Event Brief
+          ¿Qué evento tenés en mente?
         </h2>
 
         <div className="bg-white rounded-2xl shadow-md p-8">
