@@ -23,6 +23,11 @@ const DefaultItems: Item[] = [
     href: '#proceso',
   },
   {
+    imgUrl: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=80',
+    title: 'Event Brief',
+    href: '#brief',
+  },
+  {
     imgUrl: 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=400&q=80',
     title: 'Contacto',
     href: '#contacto',
