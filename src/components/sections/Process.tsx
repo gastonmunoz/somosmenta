@@ -11,6 +11,7 @@ const STEPS = [
     title: "Escuchamos",
     description:
       "Entendemos tu empresa, tu cultura y los objetivos del evento antes de proponer cualquier cosa. Cada evento es único, y queremos comprenderlo en profundidad antes de sugerir cualquier solución.",
+    bullets: ["Brief de evento", "Análisis de objetivos", "Definición de audiencia", "Alineación con la identidad de marca"],
     image:
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800",
   },
@@ -19,6 +20,7 @@ const STEPS = [
     title: "Diseñamos",
     description:
       "Creamos la propuesta a medida: concepto, presupuesto, proveedores y cronograma. Nada es genérico: cada propuesta refleja tu identidad y los objetivos que querés alcanzar.",
+    bullets: ["Concepto creativo", "Presupuesto detallado", "Selección de proveedores", "Cronograma de producción"],
     image:
       "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800",
   },
@@ -27,6 +29,7 @@ const STEPS = [
     title: "Conectamos",
     description:
       "Gestionamos cada proveedor para que vos no tengas que hablar con nadie más. Tenemos una red de proveedores seleccionados y negociamos en tu nombre para garantizar calidad y precio.",
+    bullets: ["Coordinación de proveedores", "Negociación de contratos", "Supervisión de entregas", "Comunicación centralizada"],
     image:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800",
   },
@@ -35,6 +38,7 @@ const STEPS = [
     title: "Ejecutamos",
     description:
       "Estamos presentes el día del evento, de principio a fin, para que todo salga perfecto. Nuestra presencia garantiza que cada detalle se cumpla según lo planificado, sin que vos tengas que preocuparte por nada.",
+    bullets: ["Dirección en sitio", "Coordinación en tiempo real", "Gestión de imprevistos", "Cierre y evaluación"],
     image:
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800",
   },
@@ -133,17 +137,38 @@ export default function Process() {
                     style={{ borderLeft: "3px solid var(--sage)" }}
                   >
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-6 pl-5 pb-8 pt-4">
-                      <p
-                        className="font-light leading-[1.75]"
-                        style={{ fontSize: "14px", color: "#888888" }}
-                      >
-                        {step.description}
-                      </p>
+                      <div>
+                        <p
+                          className="font-light leading-[1.75] mb-6"
+                          style={{ fontSize: "14px", color: "#888888" }}
+                        >
+                          {step.description}
+                        </p>
+                        <ul className="grid grid-cols-2 gap-x-8 gap-y-3">
+                          {step.bullets.map((b) => (
+                            <li
+                              key={b}
+                              className="flex items-center gap-2"
+                            >
+                              <span
+                                className="flex-shrink-0 w-1 h-1 rounded-full"
+                                style={{ background: "var(--sage)" }}
+                              />
+                              <span
+                                className="uppercase"
+                                style={{ fontSize: "7px", letterSpacing: "1.5px", color: "#aaaaaa" }}
+                              >
+                                {b}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                       <img
                         src={step.image}
                         alt={step.title}
                         className="w-full object-cover object-top hidden md:block"
-                        style={{ aspectRatio: "3/4", borderRadius: "2px" }}
+                        style={{ maxHeight: "220px", borderRadius: "2px" }}
                         loading="lazy"
                       />
                     </div>
