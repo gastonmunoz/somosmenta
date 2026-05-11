@@ -22,17 +22,23 @@ Single-page marketing site for Calton (corporate event agency). One route (`/`),
 
 ### Page composition (`src/app/page.tsx`)
 
-Sections render in order: `Navbar → Hero → Services → About → Process → Wizard → Contact → Footer`. All are single-purpose components with no shared state between them.
+Sections render in order: `Preloader → Navbar → Hero → Wizard → Services → About → Process → FAQ → Contact → Footer → ChatWidget`. All are single-purpose components with no shared state between them.
 
 ### Component split
 
-- `src/components/sections/` — page sections (Navbar, Hero, Services, About, Process, Contact). Each maps to a page `id` anchor used for scroll navigation.
+- `src/components/sections/` — page sections (Navbar, Hero, Services, About, Process, FAQ, Contact). Each maps to a page `id` anchor used for scroll navigation.
 - `src/components/ui/` — reusable primitives and complex UI pieces:
   - `button.tsx` — shadcn Button with CVA variants
   - `hero-section-calton.tsx` — Framer Motion animated hero with image collage
   - `link-hover.tsx` — GSAP-powered fullscreen nav menu (image-hover effect). Loaded `ssr: false` via `next/dynamic` because GSAP's `registerPlugin` conflicts with SSR.
   - `sticky-scroll-cards-section.tsx` — Services sticky scroll
+  - `preloader.tsx` — loading animation shown before page renders
+  - `editorial-services-grid.tsx` — editorial grid layout for services display
   - `wizard/` — 5-step Event Brief wizard components (EventType, Attendees, Date, Budget, Contact) + WizardSuccess
+  - `chatbot/ChatWidget.tsx` — floating chat widget (FAB, bottom-right). Conversational interface powered by Claude Haiku. Captures 5 lead fields (name, company, email, event type, attendees) naturally during conversation; sends to `/api/capture-lead` when complete. Parses Calendly URLs as clickable links.
+- `src/app/api/chat/route.ts` — calls Claude Haiku, processes responses, extracts lead data from conversation
+- `src/app/api/capture-lead/route.ts` — saves captured leads
+- `src/lib/chatbot-prompt.ts` — chatbot system prompt: personality, FAQ answers, lead qualification strategy, guardrails
 - `src/lib/utils.ts` — `cn()` helper (clsx + tailwind-merge)
 - `src/lib/wizard-types.ts` — `WizardData` type, event/budget label maps, recommended services per event type
 - `src/lib/generateBrief.ts` — generates a PDF brief from `WizardData` (client-side, no API)
@@ -65,4 +71,4 @@ Always use these tokens (`var(--sage)`, `text-sage`, etc.) instead of raw hex. F
 
 ### Scroll anchors
 
-All sections use `id` attributes (`#hero`, `#servicios`, `#nosotros`, `#proceso`, `#contacto`). `scroll-margin-top: 72px` is set globally for fixed navbar offset.
+All sections use `id` attributes (`#hero`, `#servicios`, `#nosotros`, `#proceso`, `#faq`, `#contacto`). `scroll-margin-top: 72px` is set globally for fixed navbar offset.
