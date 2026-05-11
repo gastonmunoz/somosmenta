@@ -24,7 +24,7 @@ export default function Manifiesto() {
         Manifiesto
       </motion.p>
 
-      <div className="overflow-hidden mb-10">
+      <div className="overflow-hidden pb-6 mb-10">
         {HEADLINE.map((line, i) => (
           <motion.span
             key={line}
