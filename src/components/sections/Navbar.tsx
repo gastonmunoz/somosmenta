@@ -101,8 +101,8 @@ export default function Navbar() {
       const links     = containerRef.current!.querySelectorAll(".nav-link");
       const fades     = containerRef.current!.querySelectorAll("[data-menu-fade]");
       const btn       = containerRef.current!.querySelector(".nav-close-btn");
-      const btnTexts  = btn?.querySelectorAll("p");
-      const btnIcon   = btn?.querySelector(".menu-button-icon");
+      const btnTexts  = btn?.querySelectorAll("p") ?? [];
+      const btnIcon   = btn?.querySelector(".menu-button-icon") ?? null;
 
       const tl = gsap.timeline();
 
