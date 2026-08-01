@@ -8,7 +8,7 @@ export type AiBriefContent = {
 };
 
 export type WizardData = {
-  eventType: 'team-building' | 'lanzamiento' | 'conferencia' | 'otro';
+  eventType: 'lanzamiento' | 'congreso-cientifico' | 'capacitacion' | 'simposio' | 'stand' | 'otro';
   attendees: number;
   date: string;
   budget: 'hasta-500k' | '500k-2m' | '2m-5m' | '5m+';
@@ -18,9 +18,11 @@ export type WizardData = {
 };
 
 export const EVENT_TYPE_LABELS: Record<WizardData['eventType'], string> = {
-  'team-building': 'Team Building',
   'lanzamiento': 'Lanzamiento',
-  'conferencia': 'Conferencia',
+  'congreso-cientifico': 'Congreso científico',
+  'capacitacion': 'Capacitación',
+  'simposio': 'Simposio',
+  'stand': 'Stand',
   'otro': 'Otro',
 };
 
@@ -32,8 +34,10 @@ export const BUDGET_LABELS: Record<WizardData['budget'], string> = {
 };
 
 export const RECOMMENDED_SERVICES: Record<WizardData['eventType'], string[]> = {
-  'team-building': ['Dinámicas grupales', 'Catering', 'Espacios al aire libre'],
   'lanzamiento': ['Escenografía', 'A/V', 'Producción de contenido'],
-  'conferencia': ['Sala equipada', 'Moderación', 'Transmisión en vivo'],
+  'congreso-cientifico': ['Sala plenaria', 'Traducción simultánea', 'Transmisión en vivo'],
+  'capacitacion': ['Aula equipada', 'Material didáctico', 'Catering'],
+  'simposio': ['Paneles y mesas redondas', 'Moderación', 'Transmisión en vivo'],
+  'stand': ['Diseño de stand', 'Personal de piso', 'Logística de feria'],
   'otro': ['Consultoría personalizada'],
 };

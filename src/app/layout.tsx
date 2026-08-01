@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "500"],
+const coolvetica = localFont({
+  variable: "--font-display",
+  display: "swap",
+  src: [
+    { path: "../fonts/coolvetica-rg.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/coolvetica-rg-italic.woff2", weight: "400", style: "italic" },
+  ],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
+const champagne = localFont({
+  variable: "--font-body",
+  display: "swap",
+  src: [
+    { path: "../fonts/champagne-limousines.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/champagne-limousines-italic.woff2", weight: "400", style: "italic" },
+    { path: "../fonts/champagne-limousines-bold.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/champagne-limousines-bold-italic.woff2", weight: "700", style: "italic" },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${playfairDisplay.variable} ${inter.variable} h-full antialiased`}
+      className={`${coolvetica.variable} ${champagne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

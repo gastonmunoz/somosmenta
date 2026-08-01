@@ -13,8 +13,8 @@ const LinkedInIcon = () => (
 );
 
 const socials = [
-  { href: "https://instagram.com/calton", label: "Instagram", Icon: InstagramIcon },
-  { href: "https://linkedin.com/company/calton", label: "LinkedIn", Icon: LinkedInIcon },
+  { href: "https://www.instagram.com/calton.ar", label: "Instagram", Icon: InstagramIcon },
+  { href: "https://www.linkedin.com/in/calton-eventos", label: "LinkedIn", Icon: LinkedInIcon },
 ];
 
 export default function SocialIcons() {

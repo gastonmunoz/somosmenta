@@ -23,8 +23,8 @@ function MessageBubble({ msg }: { msg: Message }) {
       <div
         className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed ${
           isUser
-            ? "bg-[var(--sage)] text-white rounded-tr-sm"
-            : "bg-[var(--sage-light)] text-[var(--black)] rounded-tl-sm"
+            ? "bg-[var(--brand-mid)] text-white rounded-tr-sm"
+            : "bg-[var(--brand-tint)] text-[var(--charcoal)] rounded-tl-sm"
         }`}
       >
         {parts.map((part, i) =>
@@ -120,14 +120,14 @@ export default function ChatWidget() {
             exit={{ opacity: 0, y: 16, scale: 0.95 }}
             transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
             className="w-80 max-h-[480px] flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-black/5"
-            style={{ background: "#fff" }}
+            style={{ background: "var(--white)" }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-[var(--sage)]">
+            <div className="flex items-center justify-between px-4 py-3 bg-[var(--brand-mid)]">
               <div className="flex items-center gap-2">
                 <span
                   className="text-[13px] font-semibold text-white"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Calton — Asistente
                 </span>
@@ -153,12 +153,12 @@ export default function ChatWidget() {
               ))}
               {loading && (
                 <div className="flex justify-start">
-                  <div className="bg-[var(--sage-light)] rounded-2xl rounded-tl-sm px-3.5 py-2.5">
+                  <div className="bg-[var(--brand-tint)] rounded-2xl rounded-tl-sm px-3.5 py-2.5">
                     <span className="flex gap-1">
                       {[0, 1, 2].map((i) => (
                         <motion.span
                           key={i}
-                          className="w-1.5 h-1.5 rounded-full bg-[var(--sage)]"
+                          className="w-1.5 h-1.5 rounded-full bg-[var(--brand)]"
                           animate={{ opacity: [0.3, 1, 0.3] }}
                           transition={{
                             duration: 1.2,
@@ -183,13 +183,13 @@ export default function ChatWidget() {
                 onKeyDown={handleKey}
                 disabled={loading}
                 placeholder="Escribí un mensaje..."
-                className="flex-1 text-[13px] bg-[#F5F5F5] rounded-xl px-3.5 py-2 outline-none placeholder:text-[var(--gray-text)] text-[var(--black)] disabled:opacity-50"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="flex-1 text-[13px] bg-[var(--gray-light)] rounded-xl px-3.5 py-2 outline-none placeholder:text-[var(--gray-text)] text-[var(--charcoal)] disabled:opacity-50"
+                style={{ fontFamily: "var(--font-body)" }}
               />
               <button
                 onClick={send}
                 disabled={loading || !input.trim()}
-                className="w-8 h-8 rounded-xl bg-[var(--sage)] flex items-center justify-center text-white disabled:opacity-40 transition-opacity flex-shrink-0 self-end"
+                className="w-8 h-8 rounded-xl bg-[var(--brand-mid)] flex items-center justify-center text-white disabled:opacity-40 transition-opacity flex-shrink-0 self-end"
                 aria-label="Enviar"
               >
                 <Send size={14} />
@@ -204,7 +204,7 @@ export default function ChatWidget() {
         onClick={() => setOpen((v) => !v)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 rounded-full bg-[var(--sage)] text-white flex items-center justify-center shadow-lg"
+        className="w-14 h-14 rounded-full bg-[var(--brand-mid)] text-white flex items-center justify-center shadow-lg"
         aria-label={open ? "Cerrar chat" : "Abrir chat"}
       >
         <AnimatePresence mode="wait" initial={false}>

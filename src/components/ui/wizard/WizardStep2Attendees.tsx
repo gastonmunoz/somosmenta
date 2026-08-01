@@ -20,8 +20,8 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
   return (
     <div>
       <h3
-        className="text-xl font-normal text-[var(--black)] mb-6"
-        style={{ fontFamily: 'var(--font-playfair)' }}
+        className="text-xl font-normal text-[var(--charcoal)] mb-6"
+        style={{ fontFamily: 'var(--font-display)' }}
       >
         ¿Cuántos asistentes esperás?
       </h3>
@@ -29,7 +29,7 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
         <div className="flex items-center gap-3 mb-4">
           <button
             onClick={() => setValue(v => clamp(v - 10))}
-            className="w-10 h-10 border border-[var(--gray-mid)] rounded-lg text-[var(--black)] hover:border-[var(--sage)] transition-colors text-lg shrink-0"
+            className="w-10 h-10 border border-[var(--gray-mid)] rounded-lg text-[var(--charcoal)] hover:border-[var(--brand)] transition-colors text-lg shrink-0"
           >
             −
           </button>
@@ -39,11 +39,11 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
             max={500}
             value={value}
             onChange={e => setValue(clamp(Number(e.target.value)))}
-            className="flex-1 border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-center text-[var(--black)] text-lg focus:outline-none focus:border-[var(--sage)]"
+            className="flex-1 border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-center text-[var(--charcoal)] text-lg focus:outline-none focus:border-[var(--brand)]"
           />
           <button
             onClick={() => setValue(v => clamp(v + 10))}
-            className="w-10 h-10 border border-[var(--gray-mid)] rounded-lg text-[var(--black)] hover:border-[var(--sage)] transition-colors text-lg shrink-0"
+            className="w-10 h-10 border border-[var(--gray-mid)] rounded-lg text-[var(--charcoal)] hover:border-[var(--brand)] transition-colors text-lg shrink-0"
           >
             +
           </button>
@@ -54,7 +54,7 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
           max={500}
           value={value}
           onChange={e => setValue(Number(e.target.value))}
-          className="w-full accent-[var(--sage)]"
+          className="w-full accent-[var(--brand)]"
         />
         <div className="flex justify-between text-[11px] text-[var(--gray-text)] mt-1">
           <span>1</span>

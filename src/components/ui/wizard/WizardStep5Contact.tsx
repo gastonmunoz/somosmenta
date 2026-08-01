@@ -31,8 +31,8 @@ export default function WizardStep5Contact({ data, onSubmit, onBack, submitting 
   return (
     <div>
       <h3
-        className="text-xl font-normal text-[var(--black)] mb-6"
-        style={{ fontFamily: 'var(--font-playfair)' }}
+        className="text-xl font-normal text-[var(--charcoal)] mb-6"
+        style={{ fontFamily: 'var(--font-display)' }}
       >
         ¿Quién nos escribe?
       </h3>
@@ -46,7 +46,7 @@ export default function WizardStep5Contact({ data, onSubmit, onBack, submitting 
             value={company}
             onChange={e => setCompany(e.target.value)}
             placeholder="Nombre de tu empresa"
-            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--black)] text-sm focus:outline-none focus:border-[var(--sage)]"
+            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand)]"
           />
         </div>
         <div>
@@ -61,7 +61,7 @@ export default function WizardStep5Contact({ data, onSubmit, onBack, submitting 
               setEmailError('');
             }}
             placeholder="tu@empresa.com"
-            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--black)] text-sm focus:outline-none focus:border-[var(--sage)]"
+            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand)]"
           />
           {emailError && <p className="text-red-500 text-[11px] mt-1">{emailError}</p>}
         </div>
@@ -75,7 +75,7 @@ export default function WizardStep5Contact({ data, onSubmit, onBack, submitting 
             onChange={e => setNotes(e.target.value)}
             placeholder="Contanos más sobre tu evento..."
             rows={3}
-            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--black)] text-sm focus:outline-none focus:border-[var(--sage)] resize-none"
+            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand)] resize-none"
           />
         </div>
       </div>

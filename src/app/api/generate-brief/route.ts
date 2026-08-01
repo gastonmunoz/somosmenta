@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
   try {
     const data: WizardData = await request.json();
 
-    if (!['team-building', 'lanzamiento', 'conferencia', 'otro'].includes(data.eventType)) {
+    if (!['lanzamiento', 'congreso-cientifico', 'capacitacion', 'simposio', 'stand', 'otro'].includes(data.eventType)) {
       return NextResponse.json({ error: 'Invalid eventType' }, { status: 400 });
     }
     if (!isValidEmail(data.email)) {

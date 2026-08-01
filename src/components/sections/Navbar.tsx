@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import { MessageCircle } from "lucide-react";
@@ -12,9 +13,8 @@ if (typeof window !== "undefined") {
 const NAV_LINKS = [
   { label: "Servicios",    href: "#servicios", shape: "1" },
   { label: "Nosotros",     href: "#nosotros",  shape: "2" },
-  { label: "Proceso",      href: "#proceso",   shape: "3" },
-  { label: "Armá tu Brief",href: "#brief",     shape: "4" },
-  { label: "Contacto",     href: "#contacto",  shape: "5" },
+  { label: "Armá tu Brief",href: "#brief",     shape: "3" },
+  { label: "Contacto",     href: "#contacto",  shape: "4" },
 ];
 
 export default function Navbar() {
@@ -152,12 +152,15 @@ export default function Navbar() {
         }}
       >
         <div className="flex justify-between items-center px-8 md:px-12 py-4">
-          <a
-            href="#hero"
-            className="text-[20px] tracking-widest uppercase font-normal"
-            style={{ fontFamily: "var(--font-playfair)", color: "var(--black)" }}
-          >
-            Calton
+          <a href="#hero" aria-label="Calton">
+            <Image
+              src="/images/logo/calton-color.png"
+              alt="Calton"
+              width={1185}
+              height={420}
+              priority
+              className="h-8 w-auto"
+            />
           </a>
 
           <button
@@ -199,42 +202,26 @@ export default function Navbar() {
               <div className="backdrop-layer second" />
               <div className="backdrop-layer" />
 
-              {/* Ambient shapes — sage-toned */}
+              {/* Ambient shapes — brand-toned */}
               <div className="ambient-background-shapes">
                 <svg className="bg-shape bg-shape-1" viewBox="0 0 400 400" fill="none">
-                  <circle className="shape-element" cx="80"  cy="120" r="40" fill="rgba(93,138,107,0.2)"  />
-                  <circle className="shape-element" cx="300" cy="80"  r="60" fill="rgba(234,240,236,0.12)"/>
-                  <circle className="shape-element" cx="200" cy="300" r="80" fill="rgba(93,138,107,0.1)"  />
-                  <circle className="shape-element" cx="350" cy="280" r="30" fill="rgba(234,240,236,0.15)"/>
+                  <circle className="shape-element" cx="80"  cy="120" r="40" fill="rgba(132,159,84,0.2)"  />
+                  <circle className="shape-element" cx="300" cy="80"  r="60" fill="rgba(241,244,234,0.12)"/>
+                  <circle className="shape-element" cx="200" cy="300" r="80" fill="rgba(132,159,84,0.1)"  />
+                  <circle className="shape-element" cx="350" cy="280" r="30" fill="rgba(241,244,234,0.15)"/>
                 </svg>
                 <svg className="bg-shape bg-shape-2" viewBox="0 0 400 400" fill="none">
-                  <path className="shape-element" d="M0 200 Q100 100,200 200 T400 200" stroke="rgba(93,138,107,0.25)"  strokeWidth="60" fill="none"/>
-                  <path className="shape-element" d="M0 280 Q100 180,200 280 T400 280" stroke="rgba(234,240,236,0.15)" strokeWidth="40" fill="none"/>
+                  <path className="shape-element" d="M0 200 Q100 100,200 200 T400 200" stroke="rgba(132,159,84,0.25)"  strokeWidth="60" fill="none"/>
+                  <path className="shape-element" d="M0 280 Q100 180,200 280 T400 280" stroke="rgba(241,244,234,0.15)" strokeWidth="40" fill="none"/>
                 </svg>
                 <svg className="bg-shape bg-shape-3" viewBox="0 0 400 400" fill="none">
-                  <circle className="shape-element" cx="50"  cy="50"  r="8"  fill="rgba(93,138,107,0.3)"  />
-                  <circle className="shape-element" cx="150" cy="50"  r="8"  fill="rgba(234,240,236,0.3)" />
-                  <circle className="shape-element" cx="250" cy="50"  r="8"  fill="rgba(93,138,107,0.3)"  />
-                  <circle className="shape-element" cx="350" cy="50"  r="8"  fill="rgba(234,240,236,0.3)" />
-                  <circle className="shape-element" cx="100" cy="150" r="12" fill="rgba(93,138,107,0.25)"  />
-                  <circle className="shape-element" cx="200" cy="150" r="12" fill="rgba(234,240,236,0.25)"/>
-                  <circle className="shape-element" cx="300" cy="150" r="12" fill="rgba(93,138,107,0.25)"  />
-                  <circle className="shape-element" cx="50"  cy="250" r="10" fill="rgba(234,240,236,0.3)" />
-                  <circle className="shape-element" cx="150" cy="250" r="10" fill="rgba(93,138,107,0.3)"  />
-                  <circle className="shape-element" cx="250" cy="250" r="10" fill="rgba(234,240,236,0.3)" />
-                  <circle className="shape-element" cx="350" cy="250" r="10" fill="rgba(93,138,107,0.3)"  />
-                  <circle className="shape-element" cx="100" cy="350" r="6"  fill="rgba(234,240,236,0.3)" />
-                  <circle className="shape-element" cx="200" cy="350" r="6"  fill="rgba(93,138,107,0.3)"  />
-                  <circle className="shape-element" cx="300" cy="350" r="6"  fill="rgba(234,240,236,0.3)" />
+                  <path className="shape-element" d="M100 100 Q150 50,200 100 Q250 150,200 200 Q150 250,100 200 Q50 150,100 100" fill="rgba(132,159,84,0.15)"/>
+                  <path className="shape-element" d="M250 200 Q300 150,350 200 Q400 250,350 300 Q300 350,250 300 Q200 250,250 200" fill="rgba(241,244,234,0.1)"/>
                 </svg>
                 <svg className="bg-shape bg-shape-4" viewBox="0 0 400 400" fill="none">
-                  <path className="shape-element" d="M100 100 Q150 50,200 100 Q250 150,200 200 Q150 250,100 200 Q50 150,100 100" fill="rgba(93,138,107,0.15)"/>
-                  <path className="shape-element" d="M250 200 Q300 150,350 200 Q400 250,350 300 Q300 350,250 300 Q200 250,250 200" fill="rgba(234,240,236,0.1)"/>
-                </svg>
-                <svg className="bg-shape bg-shape-5" viewBox="0 0 400 400" fill="none">
-                  <line className="shape-element" x1="0"   y1="100" x2="300" y2="400" stroke="rgba(93,138,107,0.2)"  strokeWidth="30"/>
-                  <line className="shape-element" x1="100" y1="0"   x2="400" y2="300" stroke="rgba(234,240,236,0.15)" strokeWidth="25"/>
-                  <line className="shape-element" x1="200" y1="0"   x2="400" y2="200" stroke="rgba(93,138,107,0.12)"  strokeWidth="20"/>
+                  <line className="shape-element" x1="0"   y1="100" x2="300" y2="400" stroke="rgba(132,159,84,0.2)"  strokeWidth="30"/>
+                  <line className="shape-element" x1="100" y1="0"   x2="400" y2="300" stroke="rgba(241,244,234,0.15)" strokeWidth="25"/>
+                  <line className="shape-element" x1="200" y1="0"   x2="400" y2="200" stroke="rgba(132,159,84,0.12)"  strokeWidth="20"/>
                 </svg>
               </div>
             </div>
@@ -258,7 +245,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                   className="inline-flex items-center gap-2 text-[10px] tracking-wider uppercase text-white rounded-sm px-5 py-3 transition-opacity hover:opacity-90"
-                  style={{ backgroundColor: "var(--sage)", fontFamily: "var(--font-inter)" }}
+                  style={{ backgroundColor: "var(--brand)", fontFamily: "var(--font-body)" }}
                 >
                   <MessageCircle className="w-3.5 h-3.5" />
                   WhatsApp

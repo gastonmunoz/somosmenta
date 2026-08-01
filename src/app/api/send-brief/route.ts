@@ -20,10 +20,7 @@ export async function POST(request: NextRequest) {
   try {
     const data: WizardData = await request.json();
 
-    if (
-      !['team-building', 'lanzamiento', 'conferencia', 'outro'].includes(data.eventType) &&
-      !['team-building', 'lanzamiento', 'conferencia', 'otro'].includes(data.eventType)
-    ) {
+    if (!['lanzamiento', 'congreso-cientifico', 'capacitacion', 'simposio', 'stand', 'otro'].includes(data.eventType)) {
       return NextResponse.json({ error: 'Invalid eventType' }, { status: 400 });
     }
     if (!isValidEmail(data.email)) {
@@ -46,7 +43,7 @@ export async function POST(request: NextRequest) {
     const tableRows = rows
       .map(
         ([k, v]) =>
-          `<tr><td style="padding:6px 14px;font-weight:600;color:#555;white-space:nowrap">${esc(k)}</td><td style="padding:6px 14px;color:#1A1A1A">${esc(v)}</td></tr>`
+          `<tr><td style="padding:6px 14px;font-weight:600;color:#555;white-space:nowrap">${esc(k)}</td><td style="padding:6px 14px;color:#414042">${esc(v)}</td></tr>`
       )
       .join('');
 
@@ -56,9 +53,9 @@ export async function POST(request: NextRequest) {
       subject: `Nuevo brief — ${esc(data.company)} — ${esc(EVENT_TYPE_LABELS[data.eventType] ?? data.eventType)}`,
       html: `
         <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
-          <h2 style="color:#5D8A6B;margin-bottom:4px">Nuevo Event Brief</h2>
+          <h2 style="color:#3F592A;margin-bottom:4px">Nuevo Event Brief</h2>
           <p style="color:#888;font-size:13px;margin-top:0">Recibido el ${new Date().toLocaleDateString('es-AR')}</p>
-          <table style="border-collapse:collapse;width:100%;margin-top:16px;border:1px solid #E5E5E5;border-radius:8px;overflow:hidden">
+          <table style="border-collapse:collapse;width:100%;margin-top:16px;border:1px solid #E3E3DF;border-radius:8px;overflow:hidden">
             ${tableRows}
           </table>
         </div>

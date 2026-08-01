@@ -2,7 +2,6 @@
 
 import { motion, type Variants } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { LayoutGrid, Star, Link as LinkIcon } from 'lucide-react'
 
 const VIDEO_URL = 'https://cdtktxwgtptsazbtehxa.supabase.co/storage/v1/object/public/calton/videos/conference_video.mp4'
 const VIDEO_URL_2 = 'https://cdtktxwgtptsazbtehxa.supabase.co/storage/v1/object/public/calton/videos/conference_2.mp4'
@@ -62,10 +61,13 @@ const float4: Variants = {
   },
 }
 
+const statBullet = <span className="block h-2 w-2 rounded-full" style={{ backgroundColor: 'var(--brand-mid)' }} />
+
 const stats = [
-  { value: '360°', label: 'Organización integral', icon: <LayoutGrid className="h-4 w-4" style={{ color: '#888888' }} /> },
-  { value: 'Boutique', label: 'Atención personalizada', icon: <Star className="h-4 w-4" style={{ color: '#888888' }} /> },
-  { value: 'Nexo', label: 'Con los mejores proveedores', icon: <LinkIcon className="h-4 w-4" style={{ color: '#888888' }} /> },
+  { value: 'Eventos', label: 'Gestión bajo estándares corporativos', icon: statBullet },
+  { value: 'Estrategia', label: 'Consideramos tus objetivos', icon: statBullet },
+  { value: 'Comunicación', label: 'Fortalecemos tu marca y tu mensaje', icon: statBullet },
+  { value: 'Boutique', label: 'Atención personalizada', icon: statBullet },
 ]
 
 export default function HeroSectionCalton() {
@@ -85,29 +87,29 @@ export default function HeroSectionCalton() {
         >
           <motion.div
             className="text-[10px] tracking-[4px] uppercase mb-5"
-            style={{ color: '#5D8A6B' }}
+            style={{ color: 'var(--brand-mid)' }}
             variants={itemVariants}
           >
-            Agencia boutique · Buenos Aires
+            Agencia Boutique especializada en eventos corporativos y congresos científicos.
           </motion.div>
 
           <motion.h1
             className="text-4xl md:text-5xl lg:text-[52px] xl:text-[60px] 2xl:text-[68px] font-normal leading-[1.15] mb-5"
-            style={{ fontFamily: 'var(--font-playfair)', color: '#1A1A1A' }}
+            style={{ fontFamily: 'var(--font-display)', color: 'var(--charcoal)' }}
             variants={itemVariants}
           >
             Experiencias que{' '}
-            <span className="italic" style={{ color: '#5D8A6B' }}>
+            <span className="italic" style={{ color: 'var(--brand-mid)' }}>
               trascienden.
             </span>
           </motion.h1>
 
           <motion.p
             className="text-sm md:text-[15px] xl:text-base leading-relaxed font-light max-w-sm mb-8"
-            style={{ color: '#888888' }}
+            style={{ color: 'var(--gray-text)' }}
             variants={itemVariants}
           >
-            Organizamos eventos corporativos a medida. Somos el nexo entre tu empresa y los mejores proveedores, con un enfoque 360° que cuida cada detalle.
+            Diseñamos y coordinamos eventos corporativos, congresos científicos y encuentros profesionales donde la estrategia, la comunicación y la producción se integran para crear experiencias memorables.
           </motion.p>
 
           <motion.div
@@ -116,7 +118,7 @@ export default function HeroSectionCalton() {
           >
             <Button asChild size="lg" variant="default">
               <a href="https://wa.me/5491157256393" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-                Hablemos
+                Agendar una reunión
               </a>
             </Button>
             <Button asChild size="lg" variant="outline">
@@ -127,22 +129,22 @@ export default function HeroSectionCalton() {
           </motion.div>
 
           <motion.div
-            className="flex flex-wrap justify-center gap-6 lg:justify-start"
+            className="flex flex-wrap justify-center gap-4 lg:gap-5 lg:justify-start"
             variants={itemVariants}
           >
             {stats.map((stat, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div
                   className="flex h-9 w-9 items-center justify-center rounded-full"
-                  style={{ backgroundColor: '#EAF0EC' }}
+                  style={{ backgroundColor: 'var(--brand-tint)' }}
                 >
                   {stat.icon}
                 </div>
                 <div>
-                  <p className="text-base font-semibold" style={{ fontFamily: 'var(--font-playfair)', color: '#1A1A1A' }}>
+                  <p className="text-base font-semibold" style={{ fontFamily: 'var(--font-display)', color: 'var(--charcoal)' }}>
                     {stat.value}
                   </p>
-                  <p className="text-[11px] font-light leading-tight" style={{ color: '#888888' }}>
+                  <p className="text-[11px] font-light leading-tight" style={{ color: 'var(--gray-text)' }}>
                     {stat.label}
                   </p>
                 </div>
@@ -160,25 +162,25 @@ export default function HeroSectionCalton() {
           {/* Floating decorative shapes */}
           <motion.div
             className="absolute -top-5 right-8 h-12 w-12 rounded-full pointer-events-none z-10"
-            style={{ backgroundColor: '#EAF0EC', opacity: 0.85 }}
+            style={{ backgroundColor: 'var(--brand-tint)', opacity: 0.85 }}
             variants={float1}
             animate="animate"
           />
           <motion.div
             className="absolute -bottom-4 left-6 h-8 w-8 rounded-xl pointer-events-none z-10"
-            style={{ backgroundColor: '#DDE9E1', opacity: 0.7 }}
+            style={{ backgroundColor: 'var(--brand-soft)', opacity: 0.7 }}
             variants={float2}
             animate="animate"
           />
           <motion.div
             className="absolute top-1/2 -left-3 h-4 w-4 rounded-full pointer-events-none z-10"
-            style={{ backgroundColor: '#5D8A6B', opacity: 0.3 }}
+            style={{ backgroundColor: 'var(--brand)', opacity: 0.3 }}
             variants={float3}
             animate="animate"
           />
           <motion.div
             className="absolute bottom-1/4 -right-2 h-6 w-6 rounded-full pointer-events-none z-10 hidden sm:block"
-            style={{ backgroundColor: '#5D8A6B', opacity: 0.15 }}
+            style={{ backgroundColor: 'var(--brand)', opacity: 0.15 }}
             variants={float4}
             animate="animate"
           />

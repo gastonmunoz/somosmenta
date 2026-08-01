@@ -45,3 +45,5 @@ next-env.d.ts
 
 # pnpm lock (npm lock already committed by scaffold)
 package-lock.json
+
+.playwright-mcp/*

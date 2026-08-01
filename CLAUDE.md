@@ -49,16 +49,23 @@ The hamburger opens a `fixed inset-0` overlay (Framer Motion `AnimatePresence`).
 
 ### Styling
 
-Tailwind v4 (`@import "tailwindcss"` in `globals.css`). Design tokens are CSS custom properties on `:root` exposed as Tailwind colors via `@theme inline`:
+Tailwind v4 (`@import "tailwindcss"` in `globals.css`). Design tokens are CSS custom properties on `:root` exposed as Tailwind colors via `@theme inline`, matching the Calton brand manual (`manual-de-marca/`):
 
-| Token | Value |
-|---|---|
-| `--black` | `#1A1A1A` |
-| `--sage` | `#5D8A6B` (primary accent) |
-| `--sage-light` | `#EAF0EC` |
-| `--gray-text` | `#888888` |
+| Token | Value | Role |
+|---|---|---|
+| `--brand-dark` | `#284019` | dark surfaces (Contact, Footer, Preloader, dark Services card) |
+| `--brand-mid` | `#3F592A` | accent **text** on white/light backgrounds — the only accent green that clears AA (8.6:1 on white) |
+| `--brand` | `#849F54` | decorative fills, dividers, chips, progress bars — **never text**, it's ~2.9:1 on white |
+| `--charcoal` | `#414042` | base text color |
+| `--brand-tint` | `#F1F4EA` | light background washes |
+| `--brand-soft` | `#DFE7CE` | borders / soft surfaces |
+| `--gray-text` | `#6E6E6C` | secondary text (5.2:1) |
 
-Always use these tokens (`var(--sage)`, `text-sage`, etc.) instead of raw hex. Fonts: `--font-playfair` (headings/logo, Playfair Display) and `--font-inter` (body).
+Rule of thumb: if it's text or an icon, use `--charcoal` or `--brand-mid` — never bare `--brand`. On a dark surface (`--brand-dark`), small text goes white (`text-white/60` etc.), not a green token — brand-mid and brand-dark are too close in luminance to each other to pair as text/background.
+
+Fonts: `--font-display` (Coolvetica Regular, headings/logo) and `--font-body` (Champagne & Limousines, body). Both are self-hosted via `next/font/local` from `src/fonts/*.woff2` (converted from the `.otf`/`.ttf` originals in `fonts/`, which are kept for reference). Coolvetica ships one weight only (400) and Champagne only 400/700 — never set `font-weight` above what's registered in `layout.tsx`, or the browser synthesizes a faux-bold that looks off.
+
+**Licensing note:** the font files in `fonts/` are personal-use licenses (Typodermic for Coolvetica, Nymphont for Champagne & Limousines) that explicitly disallow web embedding as-is. `next/font/local` embeds via `@font-face`. Get Typodermic's web license and make the Nymphont donation before this goes to production.
 
 ### Key dependencies
 

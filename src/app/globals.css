@@ -1,30 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --black: #1A1A1A;
+  --brand-dark: #284019;
+  --brand-mid: #3F592A;
+  --brand: #849F54;
+  --charcoal: #414042;
+
   --white: #FFFFFF;
-  --sage: #5D8A6B;
-  --sage-light: #EAF0EC;
+  --brand-tint: #F1F4EA;
+  --brand-soft: #DFE7CE;
   --gray-light: #F5F5F3;
-  --gray-mid: #E5E5E5;
-  --gray-text: #888888;
+  --gray-mid: #E3E3DF;
+  --gray-text: #6E6E6C;
 }
 
 @theme inline {
-  --color-black: var(--black);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-mid: var(--brand-mid);
+  --color-brand: var(--brand);
+  --color-charcoal: var(--charcoal);
   --color-white: var(--white);
-  --color-sage: var(--sage);
-  --color-sage-light: var(--sage-light);
+  --color-brand-tint: var(--brand-tint);
+  --color-brand-soft: var(--brand-soft);
   --color-gray-light: var(--gray-light);
   --color-gray-mid: var(--gray-mid);
   --color-gray-text: var(--gray-text);
-  --font-playfair: var(--font-playfair);
-  --font-inter: var(--font-inter);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 body {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  color: var(--black);
+  font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--charcoal);
   background: var(--white);
 }
 
@@ -80,10 +87,10 @@ section[id] {
 .backdrop-layer {
   position: absolute;
   inset: 0;
-  background: var(--black);
+  background: var(--brand-dark);
 }
-.backdrop-layer.first  { background: var(--sage-light); }
-.backdrop-layer.second { background: var(--sage); }
+.backdrop-layer.first  { background: var(--brand-tint); }
+.backdrop-layer.second { background: var(--brand); }
 
 .ambient-background-shapes {
   position: absolute;
@@ -135,9 +142,9 @@ section[id] {
 }
 
 .nav-link-text {
-  font-family: var(--font-playfair);
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 5vw, 3rem);
-  font-weight: 900;
+  font-weight: 400;
   color: white;
   line-height: 1;
   letter-spacing: -1px;
@@ -145,7 +152,7 @@ section[id] {
   z-index: 1;
   transition: color 0.25s ease;
 }
-.nav-link:hover .nav-link-text { color: var(--sage-light); }
+.nav-link:hover .nav-link-text { color: var(--brand-tint); }
 
 .nav-link-hover-bg {
   position: absolute;
@@ -163,7 +170,7 @@ section[id] {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--black);
+  color: var(--charcoal);
   height: 24px;
   overflow: hidden;
   padding: 0;
@@ -183,7 +190,7 @@ section[id] {
   line-height: 24px;
   height: 24px;
   flex-shrink: 0;
-  font-family: var(--font-inter);
+  font-family: var(--font-body);
 }
 
 .icon-wrap {

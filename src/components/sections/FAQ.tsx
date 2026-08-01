@@ -59,12 +59,12 @@ export default function FAQ() {
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="mb-12"
         >
-          <p className="text-[10px] tracking-[4px] uppercase text-[var(--sage)] mb-4">
+          <p className="text-[10px] tracking-[4px] uppercase text-[var(--brand-mid)] mb-4">
             Preguntas frecuentes
           </p>
           <h2
-            className="text-4xl md:text-5xl font-normal text-[var(--black)] leading-tight"
-            style={{ fontFamily: "var(--font-playfair)" }}
+            className="text-4xl md:text-5xl font-normal text-[var(--charcoal)] leading-tight"
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Todo lo que querés saber
           </h2>
@@ -75,7 +75,7 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.12, ease: [0.23, 1, 0.32, 1] }}
-          className="divide-y divide-[#1A1A1A]/10"
+          className="divide-y divide-charcoal/10"
         >
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -86,7 +86,7 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between py-5 text-left gap-4 group"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-[15px] font-medium text-[var(--black)] group-hover:text-[var(--sage)] transition-colors duration-200">
+                  <span className="text-[15px] font-medium text-[var(--charcoal)] group-hover:text-[var(--brand-mid)] transition-colors duration-200">
                     {faq.question}
                   </span>
                   <motion.span

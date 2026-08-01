@@ -89,16 +89,16 @@ export default function Wizard() {
   ];
 
   return (
-    <section id="brief" className="bg-[var(--sage-light)] py-20 md:py-24 px-8 md:px-12">
+    <section id="brief" className="bg-[var(--brand-tint)] py-20 md:py-24 px-8 md:px-12">
       <div className="max-w-xl mx-auto">
-        <p className="text-[10px] tracking-[4px] uppercase text-[var(--sage)] mb-4 text-center">
-          Contanos sobre tu evento
+        <p className="text-[10px] tracking-[4px] uppercase text-[var(--brand-mid)] mb-4 text-center">
+          Todo gran evento comienza con una idea
         </p>
         <h2
-          className="text-4xl md:text-5xl font-normal text-[var(--black)] mb-10 text-center"
-          style={{ fontFamily: 'var(--font-playfair)' }}
+          className="text-4xl md:text-5xl font-normal text-[var(--charcoal)] mb-10 text-center"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
-          ¿Qué evento tenés en mente?
+          Seleccioná el proyecto que mejor describa tu evento
         </h2>
 
         <div className="bg-white rounded-2xl shadow-md p-8">
@@ -113,7 +113,7 @@ export default function Wizard() {
               </div>
               <div className="h-1.5 bg-[var(--gray-mid)] rounded-full mb-8">
                 <div
-                  className="h-full bg-[var(--sage)] rounded-full transition-all duration-300"
+                  className="h-full bg-[var(--brand)] rounded-full transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>

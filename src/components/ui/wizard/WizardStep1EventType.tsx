@@ -18,8 +18,8 @@ export default function WizardStep1EventType({ data, onNext }: Props) {
   return (
     <div>
       <h3
-        className="text-xl font-normal text-[var(--black)] mb-6"
-        style={{ fontFamily: 'var(--font-playfair)' }}
+        className="text-xl font-normal text-[var(--charcoal)] mb-6"
+        style={{ fontFamily: 'var(--font-display)' }}
       >
         ¿Qué tipo de evento estás planeando?
       </h3>
@@ -29,10 +29,10 @@ export default function WizardStep1EventType({ data, onNext }: Props) {
             key={value}
             onClick={() => setSelected(value)}
             className={cn(
-              'border rounded-lg p-4 text-sm text-left transition-colors text-[var(--black)]',
+              'border rounded-lg p-4 text-sm text-left transition-colors text-[var(--charcoal)]',
               selected === value
-                ? 'border-[var(--sage)] bg-[var(--sage-light)]'
-                : 'border-[var(--gray-mid)] hover:border-[var(--sage)]'
+                ? 'border-[var(--brand)] bg-[var(--brand-tint)]'
+                : 'border-[var(--gray-mid)] hover:border-[var(--brand)]'
             )}
           >
             {label}

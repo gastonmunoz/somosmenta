@@ -99,7 +99,7 @@ export const ConnoisseurStackInteractor = ({
                     className="text-lg md:text-2xl font-bold transition-all duration-500 mt-1 md:mt-2 tabular-nums"
                     style={{
                       color:
-                        activeIndex === index ? "var(--sage)" : "#3a3a3a",
+                        activeIndex === index ? "var(--brand)" : "rgba(255,255,255,0.35)",
                       transform:
                         activeIndex === index ? "scale(1.1)" : "scale(1)",
                       display: "inline-block",
@@ -111,12 +111,12 @@ export const ConnoisseurStackInteractor = ({
                   <h2
                     className="text-[clamp(1.8rem,6vw,3.75rem)] md:text-5xl lg:text-6xl uppercase leading-[0.85] transition-all duration-700"
                     style={{
-                      fontFamily: "var(--font-playfair)",
-                      fontWeight: 900,
+                      fontFamily: "var(--font-display)",
+                      fontWeight: 400,
                       letterSpacing: "-1px",
                       color: activeIndex === index ? "#ffffff" : "transparent",
                       WebkitTextStroke:
-                        activeIndex === index ? "0px" : "1.5px #3a3a3a",
+                        activeIndex === index ? "0px" : "1.5px rgba(255,255,255,0.3)",
                       opacity: activeIndex === index ? 1 : 0.6,
                       transform:
                         activeIndex === index
@@ -124,9 +124,17 @@ export const ConnoisseurStackInteractor = ({
                           : "translateX(0px)",
                     }}
                   >
-                    {item.name.split(" ")[0]}
-                    <br />
-                    {item.name.split(" ").slice(1).join(" ")}
+                    {(() => {
+                      const words = item.name.split(" ");
+                      const breakIndex = words.length > 3 ? 2 : 1;
+                      return (
+                        <>
+                          {words.slice(0, breakIndex).join(" ")}
+                          <br />
+                          {words.slice(breakIndex).join(" ")}
+                        </>
+                      );
+                    })()}
                   </h2>
                 </div>
               </li>

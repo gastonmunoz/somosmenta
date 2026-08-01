@@ -126,7 +126,7 @@ export default function ImageHover({ items = DefaultItems, onNavigate }: Props) 
                   href={href}
                   onClick={onNavigate}
                   className="block text-black/30 hover:text-black transition-colors duration-200 tracking-wide"
-                  style={{ fontFamily: 'var(--font-playfair)' }}
+                  style={{ fontFamily: 'var(--font-display)' }}
                 >
                   {title}
                 </a>

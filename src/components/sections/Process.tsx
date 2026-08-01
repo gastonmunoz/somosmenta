@@ -53,7 +53,7 @@ export default function Process() {
       className="bg-white px-8 md:px-12 xl:px-20 py-20 md:py-28"
     >
       <motion.p
-        className="uppercase text-[var(--sage)] mb-12"
+        className="uppercase text-[var(--brand-mid)] mb-12"
         style={{ fontSize: "8px", letterSpacing: "4px" }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -82,16 +82,16 @@ export default function Process() {
                 style={{
                   borderTop:
                     i === 0
-                      ? "2px solid var(--black)"
+                      ? "2px solid var(--charcoal)"
                       : "1px solid #eeeeee",
                 }}
               >
                 <span
                   className="absolute right-0 top-1/2 -translate-y-1/2 select-none pointer-events-none"
                   style={{
-                    fontFamily: "var(--font-inter)",
+                    fontFamily: "var(--font-body)",
                     fontSize: "clamp(3rem, 6vw, 5rem)",
-                    fontWeight: 900,
+                    fontWeight: 700,
                     color: "#f0f0f0",
                     lineHeight: 1,
                   }}
@@ -105,7 +105,7 @@ export default function Process() {
                     style={{
                       fontSize: "7px",
                       letterSpacing: "2px",
-                      color: "var(--sage)",
+                      color: "var(--brand-mid)",
                     }}
                   >
                     Etapa {step.id}
@@ -113,11 +113,11 @@ export default function Process() {
                   <span
                     className="leading-none"
                     style={{
-                      fontFamily: "var(--font-playfair)",
+                      fontFamily: "var(--font-display)",
                       fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                      fontWeight: 900,
+                      fontWeight: 400,
                       letterSpacing: "-0.5px",
-                      color: isOpen ? "var(--black)" : "#cccccc",
+                      color: isOpen ? "var(--charcoal)" : "#cccccc",
                       transition: "color 0.3s ease",
                     }}
                   >
@@ -134,13 +134,13 @@ export default function Process() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
                     className="overflow-hidden"
-                    style={{ borderLeft: "3px solid var(--sage)" }}
+                    style={{ borderLeft: "3px solid var(--brand)" }}
                   >
                     <div className="grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-6 pl-5 pb-8 pt-4">
                       <div>
                         <p
                           className="font-light leading-[1.75] mb-6"
-                          style={{ fontSize: "14px", color: "#888888" }}
+                          style={{ fontSize: "14px", color: "var(--gray-text)" }}
                         >
                           {step.description}
                         </p>
@@ -152,11 +152,11 @@ export default function Process() {
                             >
                               <span
                                 className="flex-shrink-0 w-1 h-1 rounded-full"
-                                style={{ background: "var(--sage)" }}
+                                style={{ background: "var(--brand)" }}
                               />
                               <span
                                 className="uppercase"
-                                style={{ fontSize: "7px", letterSpacing: "1.5px", color: "#aaaaaa" }}
+                                style={{ fontSize: "7px", letterSpacing: "1.5px", color: "var(--gray-text)" }}
                               >
                                 {b}
                               </span>
@@ -177,7 +177,7 @@ export default function Process() {
               </AnimatePresence>
 
               {isLast && (
-                <div style={{ borderBottom: "2px solid var(--sage)" }} />
+                <div style={{ borderBottom: "2px solid var(--brand)" }} />
               )}
             </motion.div>
           )

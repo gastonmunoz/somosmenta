@@ -17,8 +17,8 @@ export default function WizardStep3Date({ data, onNext, onBack }: Props) {
   return (
     <div>
       <h3
-        className="text-xl font-normal text-[var(--black)] mb-6"
-        style={{ fontFamily: 'var(--font-playfair)' }}
+        className="text-xl font-normal text-[var(--charcoal)] mb-6"
+        style={{ fontFamily: 'var(--font-display)' }}
       >
         ¿Cuándo es el evento?
       </h3>
@@ -28,7 +28,7 @@ export default function WizardStep3Date({ data, onNext, onBack }: Props) {
           min={today}
           value={value}
           onChange={e => setValue(e.target.value)}
-          className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--black)] focus:outline-none focus:border-[var(--sage)]"
+          className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] focus:outline-none focus:border-[var(--brand)]"
         />
       </div>
       <div className="flex gap-3">

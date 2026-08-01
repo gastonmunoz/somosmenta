@@ -22,7 +22,7 @@ const services: ServiceCard[] = [
     desc: "Conferencias, convenciones, seminarios y congresos. Planificamos y ejecutamos eventos de cualquier magnitud con precisión y creatividad, asegurándonos de que cada asistente viva algo memorable.",
     tags: ["Conferencias", "Convenciones", "Seminarios", "Congresos"],
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&auto=format&fit=crop&q=80",
-    bg: "#F2F6F3",
+    bg: "#F1F4EA",
     top: "64px",
     zIndex: 10,
     dark: false,
@@ -34,7 +34,7 @@ const services: ServiceCard[] = [
     desc: "Presentaciones de producto y activaciones inmersivas que generan impacto real. Cada lanzamiento conecta tu marca con las personas de una forma que trasciende el evento.",
     tags: ["Lanzamientos", "Activaciones", "Brand experience"],
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=900&auto=format&fit=crop&q=80",
-    bg: "#E8F0EB",
+    bg: "#DFE7CE",
     top: "72px",
     zIndex: 20,
     dark: false,
@@ -46,7 +46,7 @@ const services: ServiceCard[] = [
     desc: "Actividades que fortalecen vínculos, cenas de fin de año, cocktails corporativos y premiaciones. Momentos que refuerzan la cultura y el sentido de pertenencia del equipo.",
     tags: ["Team building", "Cenas", "Premiaciones", "Cocktails"],
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80",
-    bg: "#DDE9E1",
+    bg: "#CBD8B4",
     top: "80px",
     zIndex: 30,
     dark: false,
@@ -58,7 +58,7 @@ const services: ServiceCard[] = [
     desc: "Coordinamos la relación con medios para que tus eventos tengan la repercusión que merecen. Desde la convocatoria hasta la cobertura, somos el nexo entre tu empresa y la prensa.",
     tags: ["Medios", "Convocatoria", "Cobertura"],
     image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&auto=format&fit=crop&q=80",
-    bg: "#1A1A1A",
+    bg: "#284019",
     top: "88px",
     zIndex: 40,
     dark: true,
@@ -73,21 +73,21 @@ export function StickyScrollCardsSection() {
       <div className="py-16 md:py-20 px-8 md:px-12 text-center bg-white">
         <p
           style={{ letterSpacing: "4px", fontSize: "10px" }}
-          className="uppercase text-[#5D8A6B] mb-3"
+          className="uppercase text-[var(--brand-mid)] mb-3"
         >
           Lo que hacemos
         </p>
         <h2
-          style={{ fontFamily: "var(--font-playfair)" }}
-          className="text-3xl md:text-4xl lg:text-[40px] font-normal text-[#1A1A1A] mb-4"
+          style={{ fontFamily: "var(--font-display)" }}
+          className="text-3xl md:text-4xl lg:text-[40px] font-normal text-[var(--charcoal)] mb-4"
         >
           Cada evento, una{" "}
-          <span className="italic" style={{ color: "var(--sage)" }}>
+          <span className="italic" style={{ color: "var(--brand)" }}>
             experiencia
           </span>{" "}
           a medida.
         </h2>
-        <p className="text-sm md:text-[15px] text-[#888888] font-light max-w-lg mx-auto leading-relaxed">
+        <p className="text-sm md:text-[15px] text-[var(--gray-text)] font-light max-w-lg mx-auto leading-relaxed">
           Somos el nexo entre tu empresa y los mejores proveedores. Organizamos,
           coordinamos y ejecutamos cada detalle.
         </p>
@@ -134,14 +134,14 @@ export function StickyScrollCardsSection() {
               <div className="p-10 md:p-12 lg:p-14 flex flex-col justify-center order-last md:order-first">
                 <p
                   style={{ fontSize: "10px", letterSpacing: "3px" }}
-                  className={`uppercase mb-4 ${card.dark ? "text-white/60" : "text-[#5D8A6B]"}`}
+                  className={`uppercase mb-4 ${card.dark ? "text-white/60" : "text-[var(--brand-mid)]"}`}
                 >
                   {card.num}
                 </p>
                 <h3
-                  style={{ fontFamily: "var(--font-playfair)" }}
+                  style={{ fontFamily: "var(--font-display)" }}
                   className={`text-2xl md:text-[28px] font-normal leading-snug mb-3 ${
-                    card.dark ? "text-white" : "text-[#1A1A1A]"
+                    card.dark ? "text-white" : "text-[var(--charcoal)]"
                   }`}
                 >
                   {card.title}
@@ -149,7 +149,7 @@ export function StickyScrollCardsSection() {
                 <p
                   style={{ fontSize: "13px" }}
                   className={`leading-relaxed font-light mb-7 ${
-                    card.dark ? "text-white/50" : "text-[#555555]"
+                    card.dark ? "text-white/50" : "text-[var(--charcoal)]"
                   }`}
                 >
                   {card.desc}
@@ -162,7 +162,7 @@ export function StickyScrollCardsSection() {
                       className={`uppercase border rounded-full px-3 py-1 ${
                         card.dark
                           ? "border-white/20 text-white/45"
-                          : "border-[#5D8A6B]/40 text-[#5D8A6B]"
+                          : "border-[var(--brand-mid)]/40 text-[var(--brand-mid)]"
                       }`}
                     >
                       {tag}
