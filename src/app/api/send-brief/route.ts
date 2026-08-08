@@ -1,69 +1,44 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
-import { EVENT_TYPE_LABELS, BUDGET_LABELS, type WizardData } from '@/lib/wizard-types';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-function esc(s: string) {
-  return s
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+import { EVENT_TYPE_LABELS, BUDGET_LABELS } from '@/lib/wizard-types';
+import { recordLead } from '@/lib/leads';
+import { wizardDataSchema } from '@/lib/validation';
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 
 export async function POST(request: NextRequest) {
   try {
-    const data: WizardData = await request.json();
-
-    if (!['lanzamiento', 'congreso-cientifico', 'capacitacion', 'simposio', 'stand', 'otro'].includes(data.eventType)) {
-      return NextResponse.json({ error: 'Invalid eventType' }, { status: 400 });
-    }
-    if (!isValidEmail(data.email)) {
-      return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
-    }
-    if (!data.company?.trim()) {
-      return NextResponse.json({ error: 'Missing company' }, { status: 400 });
+    const allowed = await checkRateLimit(getClientIp(request), 'send-brief');
+    if (!allowed) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
     }
 
-    const rows: [string, string][] = [
-      ['Tipo de evento', EVENT_TYPE_LABELS[data.eventType] ?? data.eventType],
-      ['Asistentes', String(data.attendees)],
-      ['Fecha', new Date(data.date).toLocaleDateString('es-AR')],
-      ['Presupuesto', BUDGET_LABELS[data.budget] ?? data.budget],
-      ['Empresa', data.company],
-      ['Email', data.email],
-      ...(data.notes ? [['Notas', data.notes] as [string, string]] : []),
-    ];
+    const body = await request.json();
+    const parsed = wizardDataSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+    }
+    const data = parsed.data;
+    const eventTypeLabel = EVENT_TYPE_LABELS[data.eventType];
 
-    const tableRows = rows
-      .map(
-        ([k, v]) =>
-          `<tr><td style="padding:6px 14px;font-weight:600;color:#555;white-space:nowrap">${esc(k)}</td><td style="padding:6px 14px;color:#414042">${esc(v)}</td></tr>`
-      )
-      .join('');
+    const result = await recordLead(
+      {
+        source: 'wizard',
+        company: data.company,
+        email: data.email,
+        eventType: eventTypeLabel,
+        attendees: data.attendees,
+        budget: BUDGET_LABELS[data.budget],
+        notes: data.notes,
+      },
+      `Nuevo brief — ${data.company} — ${eventTypeLabel}`,
+      'Nuevo Event Brief'
+    );
 
-    await resend.emails.send({
-      from: process.env.RESEND_FROM!,
-      to: process.env.RESEND_TO!,
-      subject: `Nuevo brief — ${esc(data.company)} — ${esc(EVENT_TYPE_LABELS[data.eventType] ?? data.eventType)}`,
-      html: `
-        <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
-          <h2 style="color:#3F592A;margin-bottom:4px">Nuevo Event Brief</h2>
-          <p style="color:#888;font-size:13px;margin-top:0">Recibido el ${new Date().toLocaleDateString('es-AR')}</p>
-          <table style="border-collapse:collapse;width:100%;margin-top:16px;border:1px solid #E3E3DF;border-radius:8px;overflow:hidden">
-            ${tableRows}
-          </table>
-        </div>
-      `,
-    });
-
-    return NextResponse.json({ ok: true });
-  } catch {
+    if (!result.ok) {
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true, notified: result.notified });
+  } catch (err) {
+    console.error('[send-brief] unexpected error:', err);
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
 }

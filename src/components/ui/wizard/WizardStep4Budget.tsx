@@ -19,15 +19,19 @@ export default function WizardStep4Budget({ data, onNext, onBack }: Props) {
   return (
     <div>
       <h3
+        id="budget-heading"
         className="text-xl font-normal text-[var(--charcoal)] mb-6"
         style={{ fontFamily: 'var(--font-display)' }}
       >
         ¿Cuál es tu presupuesto estimado?
       </h3>
-      <div className="grid grid-cols-2 gap-3 mb-8">
+      <div role="radiogroup" aria-labelledby="budget-heading" className="grid grid-cols-2 gap-3 mb-8">
         {OPTIONS.map(([value, label]) => (
           <button
             key={value}
+            type="button"
+            role="radio"
+            aria-checked={selected === value}
             onClick={() => setSelected(value)}
             className={cn(
               'border rounded-lg p-4 text-sm text-left transition-colors text-[var(--charcoal)]',

@@ -17,19 +17,18 @@ export default function Contact() {
         >
           Hablemos.
         </h2>
-        <p className="text-[13px] text-white/45 font-light mb-10 leading-relaxed">
+        <p className="text-[13px] text-white/70 font-light mb-10 leading-relaxed">
           Contanos tu proyecto y te armamos una propuesta a medida.
         </p>
         <a
           href="mailto:hola@calton.com.ar"
-          aria-label="Contactar por mail"
           className="block mx-auto w-fit bg-brand-mid text-white text-[11px] tracking-[3px] uppercase px-9 py-4 rounded-sm mb-10 hover:brightness-110 transition-all"
         >
           <Mail className="w-4 h-4 inline mr-2 align-middle" />
           Escribinos por mail
         </a>
         <SocialIcons />
-        <p className="text-[10px] text-white/30 tracking-[2.5px] uppercase mt-4">
+        <p className="text-[10px] text-white/70 tracking-[2.5px] uppercase mt-4">
           hola@calton.com.ar
         </p>
       </div>

@@ -11,7 +11,7 @@ export default function Footer() {
           height={420}
           className="h-6 w-auto opacity-80"
         />
-        <span className="text-[10px] text-white/20 tracking-[1px]">
+        <span className="text-[10px] text-white/70 tracking-[1px]">
           © 2026 Calton. Todos los derechos reservados.
         </span>
       </div>

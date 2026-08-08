@@ -8,6 +8,7 @@ import WizardStep3Date from '@/components/ui/wizard/WizardStep3Date';
 import WizardStep4Budget from '@/components/ui/wizard/WizardStep4Budget';
 import WizardStep5Contact from '@/components/ui/wizard/WizardStep5Contact';
 import WizardSuccess from '@/components/ui/wizard/WizardSuccess';
+import WizardError from '@/components/ui/wizard/WizardError';
 import { generateBrief } from '@/lib/generateBrief';
 import {
   EVENT_TYPE_LABELS,
@@ -24,6 +25,7 @@ export default function Wizard() {
   const [data, setData] = useState<Partial<WizardData>>({});
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   function handleNext(partial: Partial<WizardData>) {
     setData(prev => ({ ...prev, ...partial }));
@@ -38,22 +40,32 @@ export default function Wizard() {
     const final = { ...data, ...partial } as WizardData;
     setData(final);
     setSubmitting(true);
+    setSubmitError(false);
 
-    let aiContent: AiBriefContent | null = null;
-    try {
-      const res = await fetch('/api/generate-brief', {
+    const [briefResult, leadResult] = await Promise.allSettled([
+      fetch('/api/generate-brief', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(final),
-      });
-      if (res.ok) aiContent = await res.json();
-    } catch {}
+      }).then(res => (res.ok ? (res.json() as Promise<AiBriefContent>) : null)),
+      fetch('/api/send-brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(final),
+      }),
+    ]);
 
-    fetch('/api/send-brief', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(final),
-    }).catch(() => {});
+    // The lead must be durably recorded before we tell the user it worked —
+    // see specs/lead-delivery-reliability/spec.md.
+    const leadSaved = leadResult.status === 'fulfilled' && leadResult.value.ok;
+    if (!leadSaved) {
+      setSubmitting(false);
+      setSubmitError(true);
+      return;
+    }
+
+    const aiContent: AiBriefContent | null =
+      briefResult.status === 'fulfilled' ? briefResult.value : null;
 
     const content: AiBriefContent = aiContent ?? {
       resumenEjecutivo: `${final.company} está organizando un evento de ${EVENT_TYPE_LABELS[final.eventType]} para ${final.attendees} personas.`,
@@ -104,6 +116,8 @@ export default function Wizard() {
         <div className="bg-white rounded-2xl shadow-md p-8">
           {done ? (
             <WizardSuccess email={data.email ?? ''} />
+          ) : submitError ? (
+            <WizardError onRetry={() => handleSubmit({})} />
           ) : (
             <>
               <div className="flex justify-between items-center mb-2">

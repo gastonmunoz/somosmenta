@@ -21,15 +21,17 @@ export default function SocialIcons() {
   return (
     <div className="flex items-center justify-center gap-3">
       {socials.map(({ href, label, Icon }) => (
-        <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-          <Button
-            variant="outline"
-            size="icon"
-            className="rounded-sm border-white/20 bg-transparent text-white/50 hover:bg-white/10 hover:text-white hover:border-white/40 transition-all duration-300"
-          >
+        <Button
+          key={label}
+          asChild
+          variant="outline"
+          size="icon"
+          className="rounded-sm border-white/20 bg-transparent text-white/50 hover:bg-white/10 hover:text-white hover:border-white/40 transition-all duration-300"
+        >
+          <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
             <Icon />
-          </Button>
-        </a>
+          </a>
+        </Button>
       ))}
     </div>
   );

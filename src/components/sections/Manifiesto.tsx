@@ -24,7 +24,7 @@ export default function Manifiesto() {
         Manifiesto
       </motion.p>
 
-      <div className="overflow-hidden pb-6 mb-10">
+      <h2 className="overflow-hidden pb-6 mb-10">
         {HEADLINE.map((line, i) => (
           <motion.span
             key={line}
@@ -45,7 +45,7 @@ export default function Manifiesto() {
             {line}
           </motion.span>
         ))}
-      </div>
+      </h2>
 
       <motion.p
         className="font-light leading-[1.7]"

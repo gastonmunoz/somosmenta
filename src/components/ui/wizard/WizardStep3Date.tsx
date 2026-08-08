@@ -25,10 +25,11 @@ export default function WizardStep3Date({ data, onNext, onBack }: Props) {
       <div className="mb-8">
         <input
           type="date"
+          aria-label="Fecha del evento"
           min={today}
           value={value}
           onChange={e => setValue(e.target.value)}
-          className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] focus:outline-none focus:border-[var(--brand)]"
+          className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] focus:outline-none focus:border-[var(--brand-mid)]"
         />
       </div>
       <div className="flex gap-3">

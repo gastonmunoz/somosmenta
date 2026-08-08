@@ -19,6 +19,8 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled]     = useState(false);
 
@@ -33,6 +35,26 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isMenuOpen]);
 
+  // Keep the rest of the page out of the tab order and AT tree while the
+  // overlay is open, and move focus in/out of it (WCAG 2.4.3, 4.1.2).
+  useEffect(() => {
+    const pageContent = document.getElementById("page-content");
+
+    if (isMenuOpen) {
+      pageContent?.setAttribute("inert", "");
+      wasOpenRef.current = true;
+      // Deferred: the open animation's gsap.set(navWrap, { display: "block" })
+      // runs in a sibling effect in this same commit, so the link isn't
+      // focusable yet on this synchronous pass.
+      requestAnimationFrame(() => {
+        containerRef.current?.querySelector<HTMLAnchorElement>(".nav-link")?.focus();
+      });
+    } else {
+      pageContent?.removeAttribute("inert");
+      if (wasOpenRef.current) closeBtnRef.current?.focus();
+    }
+  }, [isMenuOpen]);
+
   // Shape hover effects (runs once on mount)
   useEffect(() => {
     if (!containerRef.current) return;
@@ -43,6 +65,8 @@ export default function Navbar() {
     } catch {
       gsap.defaults({ ease: "power2.out", duration: 0.7 });
     }
+
+    const cleanupFns: (() => void)[] = [];
 
     const ctx = gsap.context(() => {
       const items = containerRef.current!.querySelectorAll(".menu-list-item[data-shape]");
@@ -74,18 +98,16 @@ export default function Navbar() {
 
         item.addEventListener("mouseenter", onEnter);
         item.addEventListener("mouseleave", onLeave);
-        (item as any)._gsapCleanup = () => {
+        cleanupFns.push(() => {
           item.removeEventListener("mouseenter", onEnter);
           item.removeEventListener("mouseleave", onLeave);
-        };
+        });
       });
     }, containerRef);
 
     return () => {
       ctx.revert();
-      containerRef.current
-        ?.querySelectorAll(".menu-list-item[data-shape]")
-        .forEach((item: any) => item._gsapCleanup?.());
+      cleanupFns.forEach((fn) => fn());
     };
   }, []);
 
@@ -164,6 +186,7 @@ export default function Navbar() {
           </a>
 
           <button
+            ref={closeBtnRef}
             className="nav-close-btn"
             onClick={() => setIsMenuOpen((v) => !v)}
             aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -196,7 +219,7 @@ export default function Navbar() {
       <div>
         <div data-nav="closed" className="nav-overlay-wrapper">
           <div className="overlay" onClick={closeMenu} />
-          <nav className="menu-content" aria-label="Menú principal">
+          <nav className="menu-content" aria-label="Menú principal" role="dialog" aria-modal="true">
             <div className="menu-bg">
               <div className="backdrop-layer first" />
               <div className="backdrop-layer second" />
@@ -245,7 +268,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                   className="inline-flex items-center gap-2 text-[10px] tracking-wider uppercase text-white rounded-sm px-5 py-3 transition-opacity hover:opacity-90"
-                  style={{ backgroundColor: "var(--brand)", fontFamily: "var(--font-body)" }}
+                  style={{ backgroundColor: "var(--brand-mid)", fontFamily: "var(--font-body)" }}
                 >
                   <MessageCircle className="w-3.5 h-3.5" />
                   WhatsApp

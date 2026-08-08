@@ -27,7 +27,7 @@ export default function About() {
             Quiénes somos
           </motion.p>
 
-          <div className="overflow-hidden">
+          <h2 className="overflow-hidden">
             {HEADLINE.map((line, i) => (
               <motion.span
                 key={line}
@@ -48,7 +48,7 @@ export default function About() {
                 {line}
               </motion.span>
             ))}
-          </div>
+          </h2>
 
           <motion.div
             className="h-px bg-[var(--charcoal)]/10 mt-8 mb-8"

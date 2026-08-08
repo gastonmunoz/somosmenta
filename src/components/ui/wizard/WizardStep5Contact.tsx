@@ -38,44 +38,55 @@ export default function WizardStep5Contact({ data, onSubmit, onBack, submitting 
       </h3>
       <div className="flex flex-col gap-4 mb-8">
         <div>
-          <label className="block text-[11px] tracking-[2px] uppercase text-[var(--gray-text)] mb-1.5">
+          <label htmlFor="wizard-company" className="block text-[11px] tracking-[2px] uppercase text-[var(--gray-text)] mb-1.5">
             Empresa
           </label>
           <input
+            id="wizard-company"
             type="text"
+            autoComplete="organization"
             value={company}
             onChange={e => setCompany(e.target.value)}
             placeholder="Nombre de tu empresa"
-            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand)]"
+            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand-mid)]"
           />
         </div>
         <div>
-          <label className="block text-[11px] tracking-[2px] uppercase text-[var(--gray-text)] mb-1.5">
+          <label htmlFor="wizard-email" className="block text-[11px] tracking-[2px] uppercase text-[var(--gray-text)] mb-1.5">
             Email
           </label>
           <input
+            id="wizard-email"
             type="email"
+            autoComplete="email"
             value={email}
             onChange={e => {
               setEmail(e.target.value);
               setEmailError('');
             }}
             placeholder="tu@empresa.com"
-            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand)]"
+            aria-invalid={!!emailError}
+            aria-describedby={emailError ? 'wizard-email-error' : undefined}
+            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand-mid)]"
           />
-          {emailError && <p className="text-red-500 text-[11px] mt-1">{emailError}</p>}
+          {emailError && (
+            <p id="wizard-email-error" role="alert" className="text-red-500 text-[11px] mt-1">
+              {emailError}
+            </p>
+          )}
         </div>
         <div>
-          <label className="block text-[11px] tracking-[2px] uppercase text-[var(--gray-text)] mb-1.5">
+          <label htmlFor="wizard-notes" className="block text-[11px] tracking-[2px] uppercase text-[var(--gray-text)] mb-1.5">
             Notas adicionales{' '}
             <span className="normal-case text-[var(--gray-text)]">(opcional)</span>
           </label>
           <textarea
+            id="wizard-notes"
             value={notes}
             onChange={e => setNotes(e.target.value)}
             placeholder="Contanos más sobre tu evento..."
             rows={3}
-            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand)] resize-none"
+            className="w-full border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-[var(--charcoal)] text-sm focus:outline-none focus:border-[var(--brand-mid)] resize-none"
           />
         </div>
       </div>

@@ -20,6 +20,7 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
   return (
     <div>
       <h3
+        id="attendees-heading"
         className="text-xl font-normal text-[var(--charcoal)] mb-6"
         style={{ fontFamily: 'var(--font-display)' }}
       >
@@ -28,6 +29,8 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <button
+            type="button"
+            aria-label="Disminuir asistentes"
             onClick={() => setValue(v => clamp(v - 10))}
             className="w-10 h-10 border border-[var(--gray-mid)] rounded-lg text-[var(--charcoal)] hover:border-[var(--brand)] transition-colors text-lg shrink-0"
           >
@@ -35,13 +38,17 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
           </button>
           <input
             type="number"
+            aria-label="Cantidad de asistentes"
+            aria-describedby="attendees-heading"
             min={1}
             max={500}
             value={value}
             onChange={e => setValue(clamp(Number(e.target.value)))}
-            className="flex-1 border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-center text-[var(--charcoal)] text-lg focus:outline-none focus:border-[var(--brand)]"
+            className="flex-1 border border-[var(--gray-mid)] rounded-lg px-4 py-3 text-center text-[var(--charcoal)] text-lg focus:outline-none focus:border-[var(--brand-mid)]"
           />
           <button
+            type="button"
+            aria-label="Aumentar asistentes"
             onClick={() => setValue(v => clamp(v + 10))}
             className="w-10 h-10 border border-[var(--gray-mid)] rounded-lg text-[var(--charcoal)] hover:border-[var(--brand)] transition-colors text-lg shrink-0"
           >
@@ -50,6 +57,7 @@ export default function WizardStep2Attendees({ data, onNext, onBack }: Props) {
         </div>
         <input
           type="range"
+          aria-label="Cantidad de asistentes"
           min={1}
           max={500}
           value={value}

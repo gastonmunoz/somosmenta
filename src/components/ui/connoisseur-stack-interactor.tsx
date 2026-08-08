@@ -75,6 +75,13 @@ export const ConnoisseurStackInteractor = ({
     createLoop(index)
   }
 
+  const handleItemKeyDown = (e: React.KeyboardEvent, index: number) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      handleItemHover(index)
+    }
+  }
+
   return (
     <div
       ref={containerRef}
@@ -90,16 +97,20 @@ export const ConnoisseurStackInteractor = ({
             {items.map((item, index) => (
               <li
                 key={item.num}
+                role="button"
+                tabIndex={0}
+                aria-pressed={activeIndex === index}
                 onMouseEnter={() => handleItemHover(index)}
                 onClick={() => handleItemHover(index)}
-                className="group cursor-pointer"
+                onKeyDown={(e) => handleItemKeyDown(e, index)}
+                className="group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-mid focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark rounded-sm"
               >
                 <div className="flex items-start gap-4 md:gap-6">
                   <span
                     className="text-lg md:text-2xl font-bold transition-all duration-500 mt-1 md:mt-2 tabular-nums"
                     style={{
                       color:
-                        activeIndex === index ? "var(--brand)" : "rgba(255,255,255,0.35)",
+                        activeIndex === index ? "var(--brand-mid)" : "rgba(255,255,255,0.55)",
                       transform:
                         activeIndex === index ? "scale(1.1)" : "scale(1)",
                       display: "inline-block",
@@ -116,8 +127,8 @@ export const ConnoisseurStackInteractor = ({
                       letterSpacing: "-1px",
                       color: activeIndex === index ? "#ffffff" : "transparent",
                       WebkitTextStroke:
-                        activeIndex === index ? "0px" : "1.5px rgba(255,255,255,0.3)",
-                      opacity: activeIndex === index ? 1 : 0.6,
+                        activeIndex === index ? "0px" : "1.5px rgba(255,255,255,0.6)",
+                      opacity: 1,
                       transform:
                         activeIndex === index
                           ? "translateX(16px)"

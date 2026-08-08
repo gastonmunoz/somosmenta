@@ -1,6 +1,8 @@
 "use client"
 
+import { useRef, useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
+import { Pause, Play } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const VIDEO_URL = 'https://cdtktxwgtptsazbtehxa.supabase.co/storage/v1/object/public/calton/videos/conference_video.mp4'
@@ -71,6 +73,21 @@ const stats = [
 ]
 
 export default function HeroSectionCalton() {
+  const video1Ref = useRef<HTMLVideoElement>(null)
+  const video2Ref = useRef<HTMLVideoElement>(null)
+  const [videosPaused, setVideosPaused] = useState(false)
+
+  function toggleVideos() {
+    const next = !videosPaused
+    setVideosPaused(next)
+    for (const ref of [video1Ref, video2Ref]) {
+      const el = ref.current
+      if (!el) continue
+      if (next) el.pause()
+      else el.play()
+    }
+  }
+
   return (
     <section
       id="hero"
@@ -117,7 +134,7 @@ export default function HeroSectionCalton() {
             variants={itemVariants}
           >
             <Button asChild size="lg" variant="default">
-              <a href="https://wa.me/5491157256393" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+              <a href="https://wa.me/5491157256393" target="_blank" rel="noopener noreferrer">
                 Agendar una reunión
               </a>
             </Button>
@@ -195,11 +212,13 @@ export default function HeroSectionCalton() {
               variants={mediaVariants}
             >
               <video
+                ref={video1Ref}
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="auto"
+                aria-hidden="true"
                 className="w-full h-full object-cover"
                 src={VIDEO_URL}
               />
@@ -212,15 +231,26 @@ export default function HeroSectionCalton() {
               variants={mediaVariants}
             >
               <video
+                ref={video2Ref}
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="auto"
+                aria-hidden="true"
                 className="w-full h-full object-cover"
                 src={VIDEO_URL_2}
               />
             </motion.div>
+
+            <button
+              type="button"
+              onClick={toggleVideos}
+              aria-label={videosPaused ? 'Reproducir videos' : 'Pausar videos'}
+              className="absolute bottom-3 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+            >
+              {videosPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
+            </button>
 
             {/* Image — bottom right, square */}
             <motion.div
